@@ -4,17 +4,16 @@ const app = express();
 
 app.use(express.json());
 
-// Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/prescriptions', require('./routes/prescriptionRoutes'));
 
-// Health check
+
 app.get('/', (req, res) => res.json({ message: 'HealthTech Prescription Management System API is running.' }));
 
-// 404 handler
+
 app.use((req, res) => res.status(404).json({ error: 'Route not found.' }));
 
-// Global error handler
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Internal server error.' });

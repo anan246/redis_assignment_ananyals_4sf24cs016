@@ -2,7 +2,7 @@ const PrescriptionModel = require('../models/prescriptionModel');
 const UserModel = require('../models/userModel');
 
 const PrescriptionController = {
-  // POST /api/prescriptions  [Doctor only]
+ 
   async create(req, res) {
     try {
       const { patient_id, medication, dosage, frequency, duration, notes } = req.body;
@@ -32,7 +32,7 @@ const PrescriptionController = {
     }
   },
 
-  // GET /api/prescriptions  [Doctor: own prescriptions | Patient: own prescriptions]
+  
   async getAll(req, res) {
     try {
       const { role, id } = req.user;
@@ -46,7 +46,7 @@ const PrescriptionController = {
     }
   },
 
-  // GET /api/prescriptions/:id  [Doctor: own | Patient: own]
+  
   async getOne(req, res) {
     try {
       const prescription = await PrescriptionModel.findById(req.params.id);
@@ -69,7 +69,7 @@ const PrescriptionController = {
     }
   },
 
-  // PUT /api/prescriptions/:id  [Doctor only]
+  
   async update(req, res) {
     try {
       const { medication, dosage, frequency, duration, notes } = req.body;
@@ -90,7 +90,7 @@ const PrescriptionController = {
     }
   },
 
-  // DELETE /api/prescriptions/:id  [Doctor only]
+  
   async delete(req, res) {
     try {
       const deleted = await PrescriptionModel.delete(req.params.id, req.user.id);
@@ -105,7 +105,7 @@ const PrescriptionController = {
     }
   },
 
-  // GET /api/prescriptions/patients  [Doctor only — list all patients]
+  
   async getPatients(req, res) {
     try {
       const patients = await UserModel.getAllPatients();

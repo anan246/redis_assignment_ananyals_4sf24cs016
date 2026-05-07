@@ -41,7 +41,7 @@ db.serialize(() => {
   db.run('CREATE INDEX IF NOT EXISTS idx_prescriptions_doctor ON prescriptions(doctor_id)');
 });
 
-// Promise wrappers for cleaner async/await usage
+
 db.asyncGet = (sql, params = []) =>
   new Promise((resolve, reject) =>
     db.get(sql, params, (err, row) => (err ? reject(err) : resolve(row)))
